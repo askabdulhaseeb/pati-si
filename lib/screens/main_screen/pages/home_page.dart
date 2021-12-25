@@ -143,7 +143,8 @@ class HomePage extends StatelessWidget {
 
   Padding _buttons(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(Utilities.padding),
+      padding: EdgeInsets.symmetric(
+          horizontal: Utilities.padding, vertical: Utilities.padding / 3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -161,8 +162,8 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 10),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               _CustomButton(
                 onTap: () {},
@@ -193,9 +194,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _ListTile extends StatelessWidget {
-  const _ListTile({
-    Key? key,
-  }) : super(key: key);
+  const _ListTile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -275,9 +274,9 @@ class _CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 90,
-        width: 100,
-        padding: EdgeInsets.all(Utilities.padding / 3),
-        margin: EdgeInsets.all(Utilities.padding / 3),
+        width: 96,
+        padding: EdgeInsets.all(Utilities.padding / 4),
+        margin: EdgeInsets.all(Utilities.padding / 4),
         alignment: Alignment.center,
         color: Theme.of(context).primaryColor,
         child: child,
