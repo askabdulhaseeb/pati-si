@@ -12,8 +12,7 @@ class MainBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       selectedIconTheme: Theme.of(context).iconTheme,
-      selectedLabelStyle: TextStyle(color: Theme.of(context).primaryColor),
-      selectedItemColor: Theme.of(context).primaryColor,
+      selectedItemColor: Colors.black,
       showUnselectedLabels: true,
       unselectedItemColor: Colors.grey,
       currentIndex: _navBar.currentTap,
@@ -33,7 +32,7 @@ class MainBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.person),
-          label: 'Notifications',
+          label: 'Profile',
         ),
       ],
     );
