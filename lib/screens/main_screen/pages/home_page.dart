@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:patisi/widgets/cache_image.dart';
 import 'package:patisi/widgets/custom_elevated_button.dart';
 import '../../../utilities/utilities.dart';
 import '../../../widgets/custom_circular_text_button.dart';
+import '../../../widgets/demos.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -42,9 +44,26 @@ class HomePage extends StatelessWidget {
           _buttons(context),
           _healthText(context),
           _timeText(context),
-          const SizedBox(height: 8),
-          CustomCircularTextButtom(text: 'See remaining rights', onTap: () {}),
-          _upgradeButton(context),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                CustomCircularTextButtom(
+                    text: 'See remaining rights', onTap: () {}),
+                _upgradeButton(context),
+                SizedBox(
+                  height: 180,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) {
+                      return const _ListTile();
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -84,9 +103,9 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Padding _upgradeButton(BuildContext context) {
+  Widget _upgradeButton(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(Utilities.padding),
+      padding: EdgeInsets.symmetric(horizontal: Utilities.padding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -168,6 +187,77 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ListTile extends StatelessWidget {
+  const _ListTile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(4),
+      child: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(Utilities.buttonBorderRadius),
+          topRight: Radius.circular(Utilities.buttonBorderRadius),
+        ),
+        child: Stack(
+          children: <Widget>[
+            InkWell(
+              onTap: () {},
+              child: CacheImage(
+                width: 240,
+                url: DEMOS.imageURL,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Positioned(
+              right: 10,
+              top: 10,
+              child: Icon(
+                Icons.star,
+                size: 32,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
+            Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  color: Theme.of(context).colorScheme.secondary
+                    ..withOpacity(0.6),
+                  padding: EdgeInsets.symmetric(
+                    vertical: Utilities.padding / 2,
+                    horizontal: Utilities.padding,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: const <Widget>[
+                      Text(
+                        'The 8 best cat foods to buy',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '8 minutes',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                )),
+          ],
+        ),
       ),
     );
   }

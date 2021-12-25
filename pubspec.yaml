@@ -9,6 +9,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  extended_image: ^6.0.1
+
   provider: ^6.0.1
 
   cupertino_icons: ^1.0.2
