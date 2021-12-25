@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patisi/screens/main_screen/main_bottom_navigation_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class _MainScreenState extends State<MainScreen> {
       body: Center(
         child: Text('Main Screen'),
       ),
+      bottomNavigationBar: MainBottomNavigationBar(),
     );
   }
 }
